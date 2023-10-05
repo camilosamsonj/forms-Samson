@@ -1,0 +1,71 @@
+<div class="card" style="width: 25rem;">
+    <div class="card-body">
+      <h5 class="card-title">Formulario de Registro </h5>
+        <form [formGroup]="userForm" >
+
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input formControlName="nombre" type="text" class="form-control"  placeholder="John" [ngClass]="{'is-invalid': nombreControlIsInvalid}">
+                <div class="invalid-feedback">
+                    <ng-container *ngIf="nombreControl.errors?.['required']">
+                        Este campo es requerido
+                    </ng-container>
+                    <ng-container *ngIf="nombreControl.errors?.['minlength']">
+                        Debe tener como mínimo 3 caracteres
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input formControlName="apellido" type="text" class="form-control"  placeholder="González" [ngClass]="{'is-invalid': apellidoControlIsInvalid}">
+                <div class="invalid-feedback">
+                    <ng-container *ngIf="apellidoControl.errors?.['required']">
+                        Este campo es requerido
+                    </ng-container>
+                    <ng-container *ngIf="apellidoControl.errors?.['minlength']">
+                        Debe tener como mínimo 3 caracteres
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email address</label>
+                <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" [ngClass]="{'is-invalid': emailControlIsInvalid}">
+                <div class="invalid-feedback">
+                    <ng-container *ngIf="emailControl.errors?.['required']">
+                        Este campo es requerido
+                    </ng-container>
+                    <ng-container *ngIf="emailControl.errors?.['email']">
+                        Debes ingresar un email válido
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                  <label for="password" class="col-form-label">Password</label>
+                </div>
+                <div class="col-auto">
+                  <input formControlName="password" type="password" id="password" class="form-control" [ngClass]="{'is-invalid': passwordControlIsInvalid}">
+                  <div class="invalid-feedback">
+                    <ng-container *ngIf="passwordControl.errors?.['required']">
+                        Este campo es requerido
+                    </ng-container>
+                    <ng-container *ngIf="passwordControl.errors?.['minlength']">
+                        Debe tener como mínimo 8 caracteres
+                    </ng-container>
+                    <ng-container *ngIf="passwordControl.errors?.['maxlength']">
+                        Debe tener como máximo 20 caracteres
+                    </ng-container>
+                </div>
+                </div>
+                
+              </div>
+              <button (click)="onSubmit()" class="btn btn-primary" type="submit">Enviar</button>
+
+        </form>
+      
+     
+    </div>
+  </div>
